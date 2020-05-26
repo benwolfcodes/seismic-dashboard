@@ -1,0 +1,152 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #202426;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    color: #F2F2F2; 
+    font-family: 'Open Sans', sans-serif; 
+}
+
+#mapid { 
+    position:fixed;
+    width:85%;
+    height:100%;
+    z-index:0;
+    right: 0;
+}
+
+#controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    position:fixed;
+    height: 100%;
+    width: 15%;
+    min-width: 130px;
+    max-height: 900px;
+    overflow: auto;
+    left: 0;
+    z-index: 1;
+    background: rgb(32,36,38);
+    background: linear-gradient(0deg, rgba(32,36,38,1) 0%, rgba(108, 115, 61,1) 100%);
+}
+
+#earthquakeupdate {
+    color:#F2F2F2;
+    background-color: #202426;
+}
+
+#earthquakelist {
+    position:fixed;
+    height: 15%;
+    width: 65%;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: #202426;
+    overflow: auto;
+    min-width: 240px;
+}
+
+h1 {    
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 32px;
+    font-weight: bold; 
+    text-align: center; 
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 16px;
+    font-weight: 600;
+    margin: 2px;
+    margin-left: 8px;
+}
+
+a {
+    text-decoration: none;
+}
+
+p:hover {
+    color: #F2F2F2;
+}
+
+#logo {
+    width: 80%;
+    margin: auto 0;
+}
+
+input[type=text], textarea {
+    border: none;
+    background: transparent;
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 600;
+    font-size: 16px;
+    width: 120px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: #FC8F49;
+}
+
+::placeholder {
+    color: #FC8F49;
+}
+
+#button {
+    color: #404040;
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 16px;
+    text-decoration: none;
+    background: #F2F2F2;
+    border: 1px solid #404040;
+    display: inline-block;
+    transition: all 0.1s 0s;
+}
+
+#button:hover {
+    color: #F2F2F2;
+    background: #202426;
+    border-color: #202426;
+    transition: all 0.4s ease 0s;
+}
+
+#update {
+    color: #F2F2F2;
+}
+
+.pin1 {
+    color: #FFE6A3;
+}
+.pin2 {
+    
+    color: #FFD462;
+}
+.pin3 {
+    color: #FC8F49;
+}
+.pin4 {
+    color: #FC7D49;
+}
+.pin6 {
+    color: #CF423C;
+}
+.pin8 {
+    color: #7A1631;
+}
+.pin10 {
+    color: #3F0B1B;
+}
