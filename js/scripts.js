@@ -1,4 +1,27 @@
-// Declare constants
+// // // Declare constants
+// var myLat;
+// var myLon; 
+
+
+// function getLocation() {
+//     if(navigator.geolocation) {
+       
+//        // timeout at 60000 milliseconds (60 seconds)
+//        var options = {timeout:60000};
+//        navigator.geolocation.getCurrentPosition(getLocation, errorHandler, options);
+    
+//        myLat = position.coords.latitude;
+//        return myLat;
+    
+//     } else {
+//         var myLat = 34.0522;
+//         var myLon = -118.2437;
+//         return myLat, myLon;
+//     }
+//  }
+
+
+
 var myLat = 34.0522;
 var myLon = -118.2437;
 var areaRadiusKM = 200;
@@ -7,10 +30,12 @@ var minMag = 1.5;
 
 // Find today and yesterday's date so we can check the last 24 hours...
 var today = new Date();
-var todayDateString = "2020-05-23" // today.toISOString().split('T')[0];
+var todayDateString = today.toISOString().split('T')[0];
 var yesterday = new Date();
 yesterday.setDate(today.getDate() - 1);
-var yesterdayDateString = "2020-05-10" //  yesterday.toISOString().split('T')[0];
+var yesterdayDateString = yesterday.toISOString().split('T')[0];
+document.getElementById("startingDate").value = yesterdayDateString;
+document.getElementById("endingDate").value = todayDateString;
 
 // Adjust zoom to fit circle size
 if (areaRadiusKM <= 200) {
@@ -84,7 +109,7 @@ function reloadMap() {
     mymap = L.map('mapid').setView([myLat, myLon], defaultZoom);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-	    maxZoom: 19,
+        maxZoom: 19,
 	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
     }).addTo(mymap);
 
@@ -144,40 +169,40 @@ function reloadMap() {
                     .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener">${dateString} - ${usgs.features[i].properties.title}</a>`)
                 // Copy for the earthquake list
                 earthquakeListDiv.insertAdjacentHTML('afterBegin', `<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener" style="color: #FC8F49"><p>${dateString} - ${usgs.features[i].properties.title}</p></a>`);
-            }else if (mag > 3 && mag <= 4) {
+            } else if (mag > 3 && mag <= 4) {
                 newMarker = L.marker([lat, lon],{icon: pin4}).addTo(mymap)
                     // Copy for the popup.
-                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener"><p>* ${dateString} - ${usgs.features[i].properties.title}</p></a>`)
+                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener">* ${dateString} - ${usgs.features[i].properties.title}</a>`)
                 // Copy for the earthquake list
                 earthquakeListDiv.insertAdjacentHTML('afterBegin', `<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener" style="color: #FC7D49"><p>${dateString} - ${usgs.features[i].properties.title}</p></a>`);
             } else if (mag > 4 && mag <= 6) {
                 newMarker = L.marker([lat, lon],{icon: pin6}).addTo(mymap)
                     // Copy for the popup.
-                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener"><p>* ${dateString} - ${usgs.features[i].properties.title}</p></a>`)
+                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener">* ${dateString} - ${usgs.features[i].properties.title}</a>`)
                 // Copy for the earthquake list
                 earthquakeListDiv.insertAdjacentHTML('afterBegin', `<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener" style="color: #CF423C"><p>${dateString} - ${usgs.features[i].properties.title}</p></a>`);
             } else if (mag > 6 && mag <= 8) {
                 newMarker = L.marker([lat, lon],{icon: pin8}).addTo(mymap)
                     // Copy for the popup.
-                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener"><p>* ${dateString} - ${usgs.features[i].properties.title}</p></a>`)
+                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener">* ${dateString} - ${usgs.features[i].properties.title}</a>`)
                 // Copy for the earthquake list
                 earthquakeListDiv.insertAdjacentHTML('afterBegin', `<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener" style="color: #7A1631"><p>${dateString} - ${usgs.features[i].properties.title}</p></a>`);
             } else if (mag > 8) {
                 newMarker = L.marker([lat, lon],{icon: pin10}).addTo(mymap)
                     // Copy for the popup.
-                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener"><p>* ${dateString} - ${usgs.features[i].properties.title}</p></a>`)
+                    .bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener">* ${dateString} - ${usgs.features[i].properties.title}</a>`)
                 // Copy for the earthquake list
                 earthquakeListDiv.insertAdjacentHTML('afterBegin', `<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener" style="color: #3F0B1B"><p>${dateString} - ${usgs.features[i].properties.title}</p></a>`);
             }
 
-            //snewMarker = L.marker([lat, lon]).addTo(mymap)
+            //newMarker = L.marker([lat, lon]).addTo(mymap)
                 // Copy for the popup.
                 //.bindPopup(`<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener"><p>* ${dateString} - ${usgs.features[i].properties.title}</p></a>`)
             // Copy for the earthquake list
             //earthquakeListDiv.insertAdjacentHTML('afterBegin', `<a href="${usgs.features[i].properties.url}" target="_blank" rel="noopener"><p>* ${dateString} - ${usgs.features[i].properties.title}</p></a>`);
         }
         // Copy for the synopsis
-        earthquakeListDiv.insertAdjacentHTML('afterBegin', `<p id="update">There were ${usgsCount} earthquakes within ${areaRadiusKM} kilometers of the specified location between ${yesterdayDateString} and ${todayDateString}, ${sigCount} of which were above magnitude ${minMag}.</p>`);
+        earthquakeListDiv.insertAdjacentHTML('afterBegin', `<p id="update">There were ${usgsCount} earthquakes within ${areaRadiusKM} kilometers of the specified location between ${yesterdayDateString} and ${todayDateString}.</p><p> ${sigCount} were above magnitude ${minMag}.</p>`);
 
     })
     .catch(err => {
